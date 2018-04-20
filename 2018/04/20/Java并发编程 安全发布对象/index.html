@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="Java并发编程 安全发布对象发布对象 使一个对象能够被当前范围之外的代码所使用  对象逸出 一种错误的发布.当一个对象还没构造完成时,就被其它线程所见.  如何安全发布对象? 在静态初始化函数中初始化一个对象 将对象引用保存到volatile类型域或者AtomicReference对象中 将对象引用保存到某个正确构造对象的final类型域中 将对象引用保存到一个由锁保护的域中  几种单例模式饿汉">
+<meta name="description" content="Java并发编程 安全发布对象发布对象 使一个对象能够被当前范围之外的代码所使用  对象逸出 一种错误的发布.当一个对象还没构造完成时,就被其它线程所见  如何安全发布对象? 在静态初始化函数中初始化一个对象 将对象引用保存到volatile类型域或者AtomicReference对象中 将对象引用保存到某个正确构造对象的final类型域中 将对象引用保存到一个由锁保护的域中  几种单例模式饿汉模">
 <meta name="keywords" content="java,concurrency">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java并发编程 安全发布对象">
 <meta property="og:url" content="http://respass.com/2018/04/20/Java并发编程 安全发布对象/index.html">
 <meta property="og:site_name" content="Respass">
-<meta property="og:description" content="Java并发编程 安全发布对象发布对象 使一个对象能够被当前范围之外的代码所使用  对象逸出 一种错误的发布.当一个对象还没构造完成时,就被其它线程所见.  如何安全发布对象? 在静态初始化函数中初始化一个对象 将对象引用保存到volatile类型域或者AtomicReference对象中 将对象引用保存到某个正确构造对象的final类型域中 将对象引用保存到一个由锁保护的域中  几种单例模式饿汉">
+<meta property="og:description" content="Java并发编程 安全发布对象发布对象 使一个对象能够被当前范围之外的代码所使用  对象逸出 一种错误的发布.当一个对象还没构造完成时,就被其它线程所见  如何安全发布对象? 在静态初始化函数中初始化一个对象 将对象引用保存到volatile类型域或者AtomicReference对象中 将对象引用保存到某个正确构造对象的final类型域中 将对象引用保存到一个由锁保护的域中  几种单例模式饿汉模">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-04-20T12:03:38.000Z">
+<meta property="og:updated_time" content="2018-04-20T12:36:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java并发编程 安全发布对象">
-<meta name="twitter:description" content="Java并发编程 安全发布对象发布对象 使一个对象能够被当前范围之外的代码所使用  对象逸出 一种错误的发布.当一个对象还没构造完成时,就被其它线程所见.  如何安全发布对象? 在静态初始化函数中初始化一个对象 将对象引用保存到volatile类型域或者AtomicReference对象中 将对象引用保存到某个正确构造对象的final类型域中 将对象引用保存到一个由锁保护的域中  几种单例模式饿汉">
+<meta name="twitter:description" content="Java并发编程 安全发布对象发布对象 使一个对象能够被当前范围之外的代码所使用  对象逸出 一种错误的发布.当一个对象还没构造完成时,就被其它线程所见  如何安全发布对象? 在静态初始化函数中初始化一个对象 将对象引用保存到volatile类型域或者AtomicReference对象中 将对象引用保存到某个正确构造对象的final类型域中 将对象引用保存到一个由锁保护的域中  几种单例模式饿汉模">
 
 
 
@@ -334,7 +334,7 @@
 <li>使一个对象能够被当前范围之外的代码所使用</li>
 </ul>
 <h2 id="对象逸出"><a href="#对象逸出" class="headerlink" title="对象逸出"></a>对象逸出</h2><ul>
-<li>一种错误的发布.当一个对象还没构造完成时,就被其它线程所见.</li>
+<li>一种错误的发布.当一个对象还没构造完成时,就被其它线程所见</li>
 </ul>
 <h2 id="如何安全发布对象"><a href="#如何安全发布对象" class="headerlink" title="如何安全发布对象?"></a>如何安全发布对象?</h2><ul>
 <li>在静态初始化函数中初始化一个对象</li>
@@ -342,7 +342,7 @@
 <li>将对象引用保存到某个正确构造对象的<code>final</code>类型域中</li>
 <li>将对象引用保存到一个由锁保护的域中</li>
 </ul>
-<h2 id="几种单例模式"><a href="#几种单例模式" class="headerlink" title="几种单例模式"></a>几种单例模式</h2><h3 id="饿汉模式-单例实例在装载时进行创建"><a href="#饿汉模式-单例实例在装载时进行创建" class="headerlink" title="饿汉模式,单例实例在装载时进行创建"></a>饿汉模式,单例实例在装载时进行创建</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ThreadSafe</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SingletonExample</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 私有构造函数</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">SingletonExample</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 单例对象</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> SingletonExample instance = <span class="keyword">new</span> SingletonExample();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 静态的工厂方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> SingletonExample <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="几种单例模式"><a href="#几种单例模式" class="headerlink" title="几种单例模式"></a>几种单例模式</h2><h3 id="饿汉模式-单例实例在装载时进行创建"><a href="#饿汉模式-单例实例在装载时进行创建" class="headerlink" title="饿汉模式(单例实例在装载时进行创建)"></a>饿汉模式(单例实例在装载时进行创建)</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ThreadSafe</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SingletonExample</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 私有构造函数</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">SingletonExample</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 单例对象</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> SingletonExample instance = <span class="keyword">new</span> SingletonExample();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 静态的工厂方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> SingletonExample <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><br></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ThreadSafe</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SingletonExample</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 私有构造函数</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">SingletonExample</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 单例对象(注意顺序)</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> SingletonExample6 instance = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        instance = <span class="keyword">new</span> SingletonExample();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 静态的工厂方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> SingletonExample6 <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <hr>
@@ -381,22 +381,6 @@
       
       
 
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2018/04/14/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-          </div>
-        </div>
       
 
       
@@ -470,7 +454,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">1</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -531,7 +515,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Java并发编程-安全发布对象"><span class="nav-number">1.</span> <span class="nav-text">Java并发编程 安全发布对象</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#发布对象"><span class="nav-number">1.1.</span> <span class="nav-text">发布对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象逸出"><span class="nav-number">1.2.</span> <span class="nav-text">对象逸出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何安全发布对象"><span class="nav-number">1.3.</span> <span class="nav-text">如何安全发布对象?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#几种单例模式"><span class="nav-number">1.4.</span> <span class="nav-text">几种单例模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#饿汉模式-单例实例在装载时进行创建"><span class="nav-number">1.4.1.</span> <span class="nav-text">饿汉模式,单例实例在装载时进行创建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#懒汉模式-单例实例在第一次使用时创建"><span class="nav-number">1.4.2.</span> <span class="nav-text">懒汉模式(单例实例在第一次使用时创建)</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Java并发编程-安全发布对象"><span class="nav-number">1.</span> <span class="nav-text">Java并发编程 安全发布对象</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#发布对象"><span class="nav-number">1.1.</span> <span class="nav-text">发布对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象逸出"><span class="nav-number">1.2.</span> <span class="nav-text">对象逸出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何安全发布对象"><span class="nav-number">1.3.</span> <span class="nav-text">如何安全发布对象?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#几种单例模式"><span class="nav-number">1.4.</span> <span class="nav-text">几种单例模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#饿汉模式-单例实例在装载时进行创建"><span class="nav-number">1.4.1.</span> <span class="nav-text">饿汉模式(单例实例在装载时进行创建)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#懒汉模式-单例实例在第一次使用时创建"><span class="nav-number">1.4.2.</span> <span class="nav-text">懒汉模式(单例实例在第一次使用时创建)</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>

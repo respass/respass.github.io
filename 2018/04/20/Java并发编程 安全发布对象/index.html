@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="java,concurrency," />
 
 
 
@@ -94,13 +94,18 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Respass">
-<meta property="og:url" content="http://respass.com/index.html">
+<meta name="description" content="Java并发编程 安全发布对象发布对象 使一个对象能够被当前范围之外的代码所使用  对象逸出 一种错误的发布.当一个对象还没构造完成时,就被其它线程所见.  如何安全发布对象? 在静态初始化函数中初始化一个对象 将对象引用保存到volatile类型域或者AtomicReference对象中 将对象引用保存到某个正确构造对象的final类型域中 将对象引用保存到一个由锁保护的域中  几种单例模式饿汉">
+<meta name="keywords" content="java,concurrency">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java并发编程 安全发布对象">
+<meta property="og:url" content="http://respass.com/2018/04/20/Java并发编程 安全发布对象/index.html">
 <meta property="og:site_name" content="Respass">
+<meta property="og:description" content="Java并发编程 安全发布对象发布对象 使一个对象能够被当前范围之外的代码所使用  对象逸出 一种错误的发布.当一个对象还没构造完成时,就被其它线程所见.  如何安全发布对象? 在静态初始化函数中初始化一个对象 将对象引用保存到volatile类型域或者AtomicReference对象中 将对象引用保存到某个正确构造对象的final类型域中 将对象引用保存到一个由锁保护的域中  几种单例模式饿汉">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-04-20T12:03:38.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Respass">
+<meta name="twitter:title" content="Java并发编程 安全发布对象">
+<meta name="twitter:description" content="Java并发编程 安全发布对象发布对象 使一个对象能够被当前范围之外的代码所使用  对象逸出 一种错误的发布.当一个对象还没构造完成时,就被其它线程所见.  如何安全发布对象? 在静态初始化函数中初始化一个对象 将对象引用保存到volatile类型域或者AtomicReference对象中 将对象引用保存到某个正确构造对象的final类型域中 将对象引用保存到一个由锁保护的域中  几种单例模式饿汉">
 
 
 
@@ -129,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="http://respass.com/"/>
+  <link rel="canonical" href="http://respass.com/2018/04/20/Java并发编程 安全发布对象/"/>
 
 
 
 
 
-  <title>Respass</title>
+  <title>Java并发编程 安全发布对象 | Respass</title>
   
 
 
@@ -160,9 +165,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-   page-home 
- ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -245,9 +248,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -277,9 +280,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/20/Java并发编程 安全发布对象/" itemprop="url">Java并发编程 安全发布对象</a></h1>
+          <h1 class="post-title" itemprop="name headline">Java并发编程 安全发布对象</h1>
         
 
         <div class="post-meta">
@@ -329,9 +330,7 @@
       
 
       
-        
-          
-            <h1 id="Java并发编程-安全发布对象"><a href="#Java并发编程-安全发布对象" class="headerlink" title="Java并发编程 安全发布对象"></a>Java并发编程 安全发布对象</h1><h2 id="发布对象"><a href="#发布对象" class="headerlink" title="发布对象"></a>发布对象</h2><ul>
+        <h1 id="Java并发编程-安全发布对象"><a href="#Java并发编程-安全发布对象" class="headerlink" title="Java并发编程 安全发布对象"></a>Java并发编程 安全发布对象</h1><h2 id="发布对象"><a href="#发布对象" class="headerlink" title="发布对象"></a>发布对象</h2><ul>
 <li>使一个对象能够被当前范围之外的代码所使用</li>
 </ul>
 <h2 id="对象逸出"><a href="#对象逸出" class="headerlink" title="对象逸出"></a>对象逸出</h2><ul>
@@ -355,8 +354,6 @@
 <p><br></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ThreadSafe</span></span><br><span class="line"><span class="meta">@Recommend</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SingletonExample</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 私有构造函数</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">SingletonExample</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> SingletonExample <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> Singleton.INSTANCE.getInstance();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">enum</span> Singleton &#123;</span><br><span class="line">        INSTANCE;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">private</span> SingletonExample singleton;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// JVM保证这个方法绝对只调用一次</span></span><br><span class="line">        Singleton() &#123;</span><br><span class="line">            singleton = <span class="keyword">new</span> SingletonExample();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> SingletonExample <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> singleton;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-          
-        
       
     </div>
     
@@ -371,142 +368,38 @@
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://respass.com/2018/04/14/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="respass">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Respass">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/14/hello-world/" itemprop="url">Hello World</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-14T23:01:12+08:00">
-                2018-04-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
+        <div class="post-tags">
           
-
+            <a href="/tags/java/" rel="tag"># java</a>
           
-            
+            <a href="/tags/concurrency/" rel="tag"># concurrency</a>
           
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
       
 
       
       
-        <div class="post-eof"></div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/14/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
       
     </footer>
   </div>
@@ -516,10 +409,11 @@
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -527,6 +421,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -547,8 +445,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
@@ -614,6 +521,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Java并发编程-安全发布对象"><span class="nav-number">1.</span> <span class="nav-text">Java并发编程 安全发布对象</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#发布对象"><span class="nav-number">1.1.</span> <span class="nav-text">发布对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象逸出"><span class="nav-number">1.2.</span> <span class="nav-text">对象逸出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何安全发布对象"><span class="nav-number">1.3.</span> <span class="nav-text">如何安全发布对象?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#几种单例模式"><span class="nav-number">1.4.</span> <span class="nav-text">几种单例模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#饿汉模式-单例实例在装载时进行创建"><span class="nav-number">1.4.1.</span> <span class="nav-text">饿汉模式,单例实例在装载时进行创建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#懒汉模式-单例实例在第一次使用时创建"><span class="nav-number">1.4.2.</span> <span class="nav-text">懒汉模式(单例实例在第一次使用时创建)</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -732,10 +655,10 @@
   
 
   
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
 
-  
+
 
   
 

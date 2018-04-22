@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="Respass">
 <meta property="og:description" content="Redis AOF持久化 AOF 持久化是通过保存 Redis 服务器所执行的命令来记录数据库状态的 AOF 文件中的所有命令都以 Redis 命令请求协议格式保存 命令请求会先保存到 AOF 缓冲区里, 然后再定期写入并同步到 AOF 文件中  AOF持久化的实现方式命令追加 当 AOF 持久化功能处于打开状态时，服务器在执行完一个写命令后，会以协议格式将被执行的写命令追加到服务器状态的 aof">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-04-22T16:07:42.000Z">
+<meta property="og:updated_time" content="2018-04-22T16:10:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Redis AOF持久化">
 <meta name="twitter:description" content="Redis AOF持久化 AOF 持久化是通过保存 Redis 服务器所执行的命令来记录数据库状态的 AOF 文件中的所有命令都以 Redis 命令请求协议格式保存 命令请求会先保存到 AOF 缓冲区里, 然后再定期写入并同步到 AOF 文件中  AOF持久化的实现方式命令追加 当 AOF 持久化功能处于打开状态时，服务器在执行完一个写命令后，会以协议格式将被执行的写命令追加到服务器状态的 aof">
@@ -344,7 +344,7 @@
 </ul>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">eventLoop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(<span class="number">1</span>) &#123;</span><br><span class="line">		<span class="comment">//处理文件事件, 接受命令请求以及发送命令回复</span></span><br><span class="line">		<span class="comment">//处理命令请求时候可能会有新内容追加到 aof_buf 缓冲区中</span></span><br><span class="line">		processFileEvents(); </span><br><span class="line">		</span><br><span class="line">		<span class="comment">//处理时间时间</span></span><br><span class="line">		processTimeEvents(); </span><br><span class="line">		</span><br><span class="line">		<span class="comment">//考虑是否将 aof_buf 中的内容写入和保存到 AOF 文件中去</span></span><br><span class="line">		flushAppendOnlyFile();</span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
-<li>flushAppendOnlyFile() 的行为是由服务器配置的 appendfsync 选项的值来决定的<br>,如下表</li>
+<li>flushAppendOnlyFile() 的行为是由服务器配置的 appendfsync 选项的值来决定的,如下表</li>
 </ul>
 <table>
 <thead>

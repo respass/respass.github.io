@@ -345,7 +345,7 @@
 </ul>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">eventLoop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(<span class="number">1</span>) &#123;</span><br><span class="line">		<span class="comment">//处理文件事件, 接受命令请求以及发送命令回复</span></span><br><span class="line">		<span class="comment">//处理命令请求时候可能会有新内容追加到 aof_buf 缓冲区中</span></span><br><span class="line">		processFileEvents(); </span><br><span class="line">		</span><br><span class="line">		<span class="comment">//处理时间时间</span></span><br><span class="line">		processTimeEvents(); </span><br><span class="line">		</span><br><span class="line">		<span class="comment">//考虑是否将 aof_buf 中的内容写入和保存到 AOF 文件中去</span></span><br><span class="line">		flushAppendOnlyFile();</span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
-<li>flushAppendOnlyFile() 的行为是由服务器配置的 appendfsync 选项的值来决定的<br>,如下表</li>
+<li>flushAppendOnlyFile() 的行为是由服务器配置的 appendfsync 选项的值来决定的,如下表</li>
 </ul>
 <table>
 <thead>
